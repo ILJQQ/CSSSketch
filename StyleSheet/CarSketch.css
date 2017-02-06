@@ -1,0 +1,653 @@
+
+/*初始化去边框*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*设置整体大小*/
+#main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+/*用于装整个事物的容器*/
+#runningCar {
+    width: 100%;
+    height: 500px;
+    margin: 250px auto 0 auto;
+}
+
+/*装车容器*/
+#car {
+    width: 400px;
+    height: 200px;
+    margin: 0 800px;
+    -moz-animation: moveAnimation 2s ease-in-out 2;
+    -moz-transform-origin: center;
+    -webkit-animation: moveAnimation 2s ease-in-out 2;
+    -webkit-transform-origin: center;
+    -o-animation: moveAnimation 2s ease-in-out 2;
+    -o-transform-origin: center;
+    -ms-animation: moveAnimation 2s ease-in-out 2;
+    -ms-transform-origin: center;
+    animation: moveAnimation 2s ease-in-out 2;
+    transform-origin: center;
+}
+
+/*车体上部分*/
+.top {
+    margin-left: 100px;
+    width: 200px;
+    height: 50px;
+    border-width: 2px 2px 0 2px;
+    border-color: #000;
+    border-style: solid;
+    border-radius: 50px 30px 0 0;
+}
+
+/*传动轴部分*/
+.axle {
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 6px;
+    width: 0;
+    height: 20px;
+    border: 2px solid #000;
+    border-radius: 0 0 2px 2px;
+    transform: rotate(50deg);
+}
+
+/*方向盘*/
+.handle {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 0;
+    height: 15px;
+    border: 2px solid #000;
+    border-radius: 2px 2px 2px 2px;
+    transform: rotate(-40deg);
+}
+
+/*B柱*/
+.bPillar {
+    margin-bottom: 4px;
+    margin-left: 50px;
+    display: inline-block;
+    width: 0px;
+    height: 46px;
+    border: 2px solid #000;
+}
+
+/*驾驶员*/
+.driver {
+    margin-left: 10px;
+    margin-bottom: 3px;
+    display: inline-block;
+    width: 20px;
+    height: 40px;
+    background-color: #000;
+    border-radius: 50% 50% 0 0;
+}
+
+/*车身部分*/
+.body {
+    display: inline-block;
+    width: 400px;
+    height: 60px;
+    border: 3px solid #000;
+    border-radius: 50px 50px 0 0;
+}
+
+/*定位轮胎*/
+.tire {
+    width: 400px;
+    height: 60px;
+    margin-top: -30px;
+}
+
+/*调节前轮胎并加入动画效果*/
+.tire_1 {
+    display: inline-block;
+    background-color: #fff;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #000;
+    border-radius: 50%;
+    margin-left: 50px;
+    -webkit-animation: animation 400ms ease-in-out 10;
+    -webkit-transform-origin: center;
+    -moz-animation: animation 400ms ease-in-out 10;
+    -moz-transform-origin: center;
+    -o-animation: animation 400ms ease-in-out 10;
+    -o-transform-origin: center;
+    -ms-animation: animation 400ms ease-in-out 10;
+    -ms-transform-origin: center;
+    animation: animation 400ms ease-in-out 10;
+    transform-origin: center;
+}
+
+/*调节后轮胎并加入动画效果*/
+.tire_2 {
+    display: inline-block;
+    background-color: #fff;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #000;
+    border-radius: 100%;
+    margin-left: 180px;
+    -webkit-animation: animation 400ms ease-in-out 10;
+    -webkit-transform-origin: center;
+    -moz-animation: animation 400ms ease-in-out 10;
+    -moz-transform-origin: center;
+    -o-animation: animation 400ms ease-in-out 10;
+    -o-transform-origin: center;
+    -ms-animation: animation 400ms ease-in-out 10;
+    -ms-transform-origin: center;
+    animation: animation 400ms ease-in-out 10;
+    transform-origin: center;
+}
+
+/*轮毂*/
+.tire_1 div {
+    margin-left: 22px;
+    position: absolute;
+    display: inline-block;
+    width: 0px;
+    height: 20px;
+    border: 3px solid #000;
+    border-radius: 50%;
+}
+
+.tire_2 div {
+    margin-left: 22px;
+    position: absolute;
+    display: inline-block;
+    width: 0px;
+    height: 20px;
+    border: 3px solid #000;
+    border-radius: 50%;
+}
+
+/*调节轮毂位置*/
+.spring_2 {
+    transform-origin: bottom;
+    transform: rotate(120deg);
+}
+
+.spring_3 {
+    transform-origin: bottom;
+    transform: rotate(240deg);
+}
+
+.spring_5 {
+    transform-origin: bottom;
+    transform: rotate(120deg);
+}
+
+.spring_6 {
+    transform-origin: bottom;
+    transform: rotate(240deg);
+}
+
+/*路面*/
+#road {
+    margin-top: -50px;
+    width: 100%;
+    height: 10px;
+    background-color: #a52a2a;
+}
+
+/*轮胎webkit关键帧*/
+@-webkit-keyframes animation {
+    0% {
+        -webkit-transform: rotateZ(0deg);
+    }
+    20% {
+        -webkit-transform: rotateZ(-72deg);
+    }
+    40% {
+        -webkit-transform: rotateZ(-144deg);
+    }
+    60% {
+        -webkit-transform: rotateZ(-216deg);
+    }
+    80% {
+        -webkit-transform: rotateZ(-288deg);
+    }
+    100% {
+        -webkit-transform: rotateZ(-360deg);
+    }
+
+}
+
+/*车体webkit关键帧*/
+@-webkit-keyframes moveAnimation {
+    0% {
+        -webkit-transform: translate(-0px, 3px);
+    }
+    5% {
+        -webkit-transform: translate(-60px, 0px);
+    }
+    10% {
+        -webkit-transform: translate(-120px, 3px);
+    }
+    15% {
+        -webkit-transform: translate(-180px, 0px);
+    }
+    20% {
+        -webkit-transform: translate(-240px, 3px);
+    }
+    25% {
+        -webkit-transform: translate(-300px, 0px);
+    }
+    30% {
+        -webkit-transform: translate(-360px, 3px);
+    }
+    35% {
+        -webkit-transform: translate(-420px, 0px);
+    }
+    40% {
+        -webkit-transform: translate(-480px, 3px);
+    }
+    45% {
+        -webkit-transform: translate(-540px, 0px);
+    }
+    50% {
+        -webkit-transform: translate(-600px, 3px);
+    }
+    55% {
+        -webkit-transform: translate(-660px, 0px);
+    }
+    60% {
+        -webkit-transform: translate(-720px, 3px);
+    }
+    65% {
+        -webkit-transform: translate(-780px, 0px);
+    }
+    70% {
+        -webkit-transform: translate(-840px, 3px);
+    }
+    75% {
+        -webkit-transform: translate(-900px, 0px);
+    }
+    80% {
+        -webkit-transform: translate(-960px, 3px);
+    }
+    85% {
+        -webkit-transform: translate(-1020px, 0px);
+    }
+    90% {
+        -webkit-transform: translate(-1080px, 3px);
+    }
+    95% {
+        -webkit-transform: translate(-1140px, 0px);
+    }
+    100% {
+        -webkit-transform: translate(-1200px, 3px);
+    }
+}
+
+/*轮胎moz关键帧*/
+@-moz-keyframes animation {
+    0% {
+        -moz-transform: rotateZ(0deg);
+    }
+    20% {
+        -moz-transform: rotateZ(-72deg);
+    }
+    40% {
+        -moz-transform: rotateZ(-144deg);
+    }
+    60% {
+        -moz-transform: rotateZ(-216deg);
+    }
+    80% {
+        -moz-transform: rotateZ(-288deg);
+    }
+    100% {
+        -moz-transform: rotateZ(-360deg);
+    }
+
+}
+
+/*车体moz关键帧*/
+@-moz-keyframes moveAnimation {
+    0% {
+        -moz-transform: translate(-0px, 3px);
+    }
+    5% {
+        -moz-transform: translate(-60px, 0px);
+    }
+    10% {
+        -moz-transform: translate(-120px, 3px);
+    }
+    15% {
+        -moz-transform: translate(-180px, 0px);
+    }
+    20% {
+        -moz-transform: translate(-240px, 3px);
+    }
+    25% {
+        -moz-transform: translate(-300px, 0px);
+    }
+    30% {
+        -moz-transform: translate(-360px, 3px);
+    }
+    35% {
+        -moz-transform: translate(-420px, 0px);
+    }
+    40% {
+        -moz-transform: translate(-480px, 3px);
+    }
+    45% {
+        -moz-transform: translate(-540px, 0px);
+    }
+    50% {
+        -moz-transform: translate(-600px, 3px);
+    }
+    55% {
+        -moz-transform: translate(-660px, 0px);
+    }
+    60% {
+        -moz-transform: translate(-720px, 3px);
+    }
+    65% {
+        -moz-transform: translate(-780px, 0px);
+    }
+    70% {
+        -moz-transform: translate(-840px, 3px);
+    }
+    75% {
+        -moz-transform: translate(-900px, 0px);
+    }
+    80% {
+        -moz-transform: translate(-960px, 3px);
+    }
+    85% {
+        -moz-transform: translate(-1020px, 0px);
+    }
+    90% {
+        -moz-transform: translate(-1080px, 3px);
+    }
+    95% {
+        -moz-transform: translate(-1140px, 0px);
+    }
+    100% {
+        -moz-transform: translate(-1200px, 3px);
+    }
+}
+
+/*轮胎opera关键帧*/
+@-o-keyframes animation {
+    0% {
+        -o-transform: rotateZ(0deg);
+    }
+    20% {
+        -o-transform: rotateZ(-72deg);
+    }
+    40% {
+        -o-transform: rotateZ(-144deg);
+    }
+    60% {
+        -o-transform: rotateZ(-216deg);
+    }
+    80% {
+        -o-transform: rotateZ(-288deg);
+    }
+    100% {
+        -o-transform: rotateZ(-360deg);
+    }
+
+}
+
+/*车体opera关键帧*/
+@-o-keyframes moveAnimation {
+    0% {
+        -o-transform: translate(-0px, 3px);
+    }
+    5% {
+        -o-transform: translate(-60px, 0px);
+    }
+    10% {
+        -o-transform: translate(-120px, 3px);
+    }
+    15% {
+        -o-transform: translate(-180px, 0px);
+    }
+    20% {
+        -o-transform: translate(-240px, 3px);
+    }
+    25% {
+        -o-transform: translate(-300px, 0px);
+    }
+    30% {
+        -o-transform: translate(-360px, 3px);
+    }
+    35% {
+        -o-transform: translate(-420px, 0px);
+    }
+    40% {
+        -o-transform: translate(-480px, 3px);
+    }
+    45% {
+        -o-transform: translate(-540px, 0px);
+    }
+    50% {
+        -o-transform: translate(-600px, 3px);
+    }
+    55% {
+        -o-transform: translate(-660px, 0px);
+    }
+    60% {
+        -o-transform: translate(-720px, 3px);
+    }
+    65% {
+        -o-transform: translate(-780px, 0px);
+    }
+    70% {
+        -o-transform: translate(-840px, 3px);
+    }
+    75% {
+        -o-transform: translate(-900px, 0px);
+    }
+    80% {
+        -o-transform: translate(-960px, 3px);
+    }
+    85% {
+        -o-transform: translate(-1020px, 0px);
+    }
+    90% {
+        -o-transform: translate(-1080px, 3px);
+    }
+    95% {
+        -o-transform: translate(-1140px, 0px);
+    }
+    100% {
+        -o-transform: translate(-1200px, 3px);
+    }
+}
+
+/*轮胎ms关键帧*/
+@-ms-keyframes animation {
+    0% {
+        -ms-transform: rotateZ(0deg);
+    }
+    20% {
+        -ms-transform: rotateZ(-72deg);
+    }
+    40% {
+        -ms-transform: rotateZ(-144deg);
+    }
+    60% {
+        -ms-transform: rotateZ(-216deg);
+    }
+    80% {
+        -ms-transform: rotateZ(-288deg);
+    }
+    100% {
+        -ms-transform: rotateZ(-360deg);
+    }
+
+}
+
+/*车体ms关键帧*/
+@-ms-keyframes moveAnimation {
+    0% {
+        -ms-transform: translate(-0px, 3px);
+    }
+    5% {
+        -ms-transform: translate(-60px, 0px);
+    }
+    10% {
+        -ms-transform: translate(-120px, 3px);
+    }
+    15% {
+        -ms-transform: translate(-180px, 0px);
+    }
+    20% {
+        -ms-transform: translate(-240px, 3px);
+    }
+    25% {
+        -ms-transform: translate(-300px, 0px);
+    }
+    30% {
+        -ms-transform: translate(-360px, 3px);
+    }
+    35% {
+        -ms-transform: translate(-420px, 0px);
+    }
+    40% {
+        -ms-transform: translate(-480px, 3px);
+    }
+    45% {
+        -ms-transform: translate(-540px, 0px);
+    }
+    50% {
+        -ms-transform: translate(-600px, 3px);
+    }
+    55% {
+        -ms-transform: translate(-660px, 0px);
+    }
+    60% {
+        -ms-transform: translate(-720px, 3px);
+    }
+    65% {
+        -ms-transform: translate(-780px, 0px);
+    }
+    70% {
+        -ms-transform: translate(-840px, 3px);
+    }
+    75% {
+        -ms-transform: translate(-900px, 0px);
+    }
+    80% {
+        -ms-transform: translate(-960px, 3px);
+    }
+    85% {
+        -ms-transform: translate(-1020px, 0px);
+    }
+    90% {
+        -ms-transform: translate(-1080px, 3px);
+    }
+    95% {
+        -ms-transform: translate(-1140px, 0px);
+    }
+    100% {
+        -ms-transform: translate(-1200px, 3px);
+    }
+}
+
+/*轮胎w3c关键帧*/
+@keyframes animation {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    20% {
+        transform: rotateZ(-72deg);
+    }
+    40% {
+        transform: rotateZ(-144deg);
+    }
+    60% {
+        transform: rotateZ(-216deg);
+    }
+    80% {
+        transform: rotateZ(-288deg);
+    }
+    100% {
+        transform: rotateZ(-360deg);
+    }
+
+}
+
+/*车体w3c关键帧*/
+@keyframes moveAnimation {
+    0% {
+        transform: translate(-0px, 3px);
+    }
+    5% {
+        transform: translate(-60px, 0px);
+    }
+    10% {
+        transform: translate(-120px, 3px);
+    }
+    15% {
+        transform: translate(-180px, 0px);
+    }
+    20% {
+        transform: translate(-240px, 3px);
+    }
+    25% {
+        transform: translate(-300px, 0px);
+    }
+    30% {
+        transform: translate(-360px, 3px);
+    }
+    35% {
+        transform: translate(-420px, 0px);
+    }
+    40% {
+        transform: translate(-480px, 3px);
+    }
+    45% {
+        transform: translate(-540px, 0px);
+    }
+    50% {
+        transform: translate(-600px, 3px);
+    }
+    55% {
+        transform: translate(-660px, 0px);
+    }
+    60% {
+        transform: translate(-720px, 3px);
+    }
+    65% {
+        transform: translate(-780px, 0px);
+    }
+    70% {
+        transform: translate(-840px, 3px);
+    }
+    75% {
+        transform: translate(-900px, 0px);
+    }
+    80% {
+        transform: translate(-960px, 3px);
+    }
+    85% {
+        transform: translate(-1020px, 0px);
+    }
+    90% {
+        transform: translate(-1080px, 3px);
+    }
+    95% {
+        transform: translate(-1140px, 0px);
+    }
+    100% {
+        transform: translate(-1200px, 3px);
+    }
+}
+
+
